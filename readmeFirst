@@ -1,0 +1,13 @@
+Hi!, for this assessment I create two different projects in the same solution, the first one Technical Assessment , 
+contains a REST webservices who calls directly to CyberSource REST API.
+
+The project "webclient" contains two pages, the first one named "checkout.html" where you can try the payment process (1 call for auth and capture, and 2 call auth and capture),
+all the payments should be validated by decision manager before go to the payment process.After each payment a new record should be stored in a database, you will find two scripts
+to create the database and table needed for the proces, also you will find a csv with some test examples (YOU SHOULD CREATE THE DATABASE AND TABLE BEFORE EXECUTE THE APPLICATION).
+
+The client is named "RefunReverse.cshtl" who contains a client to verify the reverse and refund methods.
+
+Please contact me if you have any doubt.
+
+Maria de la Luz Cervera.
+cervera.maria03@gmail.com
