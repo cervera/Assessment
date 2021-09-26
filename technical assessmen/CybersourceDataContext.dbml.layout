@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="CybersourceDataContext">
+  <DataContextMoniker Name="/CybersourceDataContextDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8a6bfadb-7ae2-4412-9969-425f684c3efa" absoluteBounds="4.5, 1.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/CybersourceDataContextDataContext/Transaction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b88473f9-aae4-4d8e-9bf5-37222ca57bc9" absoluteBounds="4.515, 2.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

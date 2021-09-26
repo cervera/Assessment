@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 8.5" name="RefundReversal">
+  <DataContextMoniker Name="/RefundReversalDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5636ba21-fec8-4ad6-a392-d477d53e05ee" absoluteBounds="9.125, 2.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/RefundReversalDataContext/Transaction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b1aab489-bdf0-4388-ab74-000c3ad29be5" absoluteBounds="9.14, 2.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

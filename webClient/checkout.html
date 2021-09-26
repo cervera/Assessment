@@ -1,0 +1,877 @@
+<html lang="en">
+
+<head>
+
+ <meta charset="UTF-8">
+ <link rel="apple-touch-icon" type="image/png"
+  href="https://cpwebassets.codepen.io/assets/favicon apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+ <meta name="apple-mobile-web-app-title" content="CodePen">
+ <link rel="shortcut icon" type="image/x-icon"
+  href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+ <link rel="mask-icon" type=""
+  href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+  color="#111">
+ <title>Cybersources example - Checkout Form with Payment Summary</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
+ <script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!--Main-->
+ <style>
+  html,
+  body {
+   height: 100%;
+   color: black;
+   /* font-family: 'Barlow', sans-serif; */
+   /* font-family: 'Roboto Condensed', sans-serif; */
+   font-family: 'Open Sans', sans-serif;
+   font-weight: 400;
+  }
+
+  body {
+   font-size: 62.5%;
+  }
+
+  body {
+   background: url(https://images.unsplash.com/photo-1462899006636-339e08d1844e?auto=format&fit=crop&w=1950&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D) no-repeat center center fixed;
+   background-size: cover;
+  }
+
+  .main-wrapper {
+   border-radius: 15px 15px 15px 15px;
+   -moz-border-radius: 15px 15px 15px 15px;
+   -webkit-border-radius: 15px 15px 15px 15px;
+   border: none;
+   -webkit-box-shadow: 0px 20px 10px 10px rgba(0, 0, 0, 0.1);
+   -moz-box-shadow: 0px 20px 10px 10px rgba(0, 0, 0, 0.1);
+   box-shadow: 0px 20px 10px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .basket-header {
+   border-radius: 15px 0 0 0;
+   -moz-border-radius: 15px 0 0 0;
+   -webkit-border-radius: 15px 0 0 0;
+   padding-left: 25px !important;
+  }
+
+  .creditcard-header {
+   border-radius: 0 15px 0 0;
+   -moz-border-radius: 0 15px 0 0;
+   -webkit-border-radius: 0 15px 0 0;
+   padding-left: 35px !important;
+  }
+
+  .panel-wrapper {}
+
+  .panel-header {
+   background: #166D9A;
+   height: 80px;
+   padding: 15px 20px 0 20px;
+  }
+
+  .panel-wrapper .basket-header .column-titles {
+   color: #A2C6DD;
+   padding: 0;
+   margin: 0;
+   /* font-family: 'Anton', sans-serif; */
+   display: none;
+   visibility: hidden;
+  }
+
+  .fix-overflow {
+   padding-right: 5px !important;
+  }
+
+  .panel-wrapper .basket-body {
+   overflow-x: hidden;
+   overflow-y: auto;
+  }
+
+  .panel-wrapper .creditcard-body {
+   padding: 30px 40px 0 40px;
+  }
+
+  .panel-wrapper .panel-body {
+   font-weight: 400;
+   font-size: 1.2em;
+   outline: none !important;
+   min-height: auto;
+   max-height: auto;
+  }
+
+  .basket-body {
+   background: #F9F9F9;
+  }
+
+  .creditcard-body {
+   background: white;
+  }
+
+  .basket-body .row.product {
+   margin: 5px 0 5px 0;
+   padding: 5px 0 5px 0;
+   border-bottom: solid 1px #eeeeee;
+  }
+
+  .basket-body .row.product div {
+   color: #777879;
+   padding: 0 10px 0 10px;
+  }
+
+  .basket-body .row.product .product-image {}
+
+  .product-image img {
+   -o-object-fit: contain;
+   object-fit: contain;
+   width: 100%;
+   min-width: 100%;
+   max-width: 100%;
+   max-height: 80px;
+  }
+
+  .card-wrapper {
+   height: 100%;
+  }
+
+  .padding-top-10 {
+   padding-top: 10px !important;
+  }
+
+  .padding-top-20 {
+   padding-top: 20px !important;
+  }
+
+  .padding-horizontal-40 {
+   padding: 0 40px 0 40px;
+  }
+
+  .align-right {
+   text-align: right;
+  }
+
+  .align-center {
+   text-align: center;
+  }
+
+  .emphasized {
+   /* font-family: 'Anton', sans-serif; */
+   /* font-family: 'Roboto Condensed', sans-serif; */
+   /* font-family: 'Raleway', sans-serif; */
+   font-family: 'Open Sans', sans-serif;
+   font-weight: 600;
+   font-size: 1.6em;
+   color: white;
+  }
+
+  .description {
+   /* font-family: 'Anton', sans-serif; */
+   /* font-family: 'Roboto Condensed', sans-serif; */
+   /* font-family: 'Raleway', sans-serif; */
+   font-family: 'Open Sans', sans-serif;
+   font-weight: 400;
+   font-size: 1.2em;
+   color: #A2C6DD;
+  }
+
+  .panel-footer {
+   padding-top: 10px;
+   height: 150px;
+  }
+
+  .basket-footer {
+   background: #166D9A;
+   border-radius: 0 0 0 15px;
+   -moz-border-radius: 0 0 0 15px;
+   -webkit-border-radius: 0 0 0 15px;
+  }
+
+  .basket-footer .title,
+  .basket-footer .subtitle {}
+
+  .creditcard-footer {
+   background: white;
+   border-radius: 0 0 15px 0;
+   -moz-border-radius: 0 0 15px 0;
+   -webkit-border-radius: 0 0 15px 0;
+   padding: 75px 30px 0 30px;
+  }
+
+  .basket-footer .row .subtitle,
+  .basket-footer .row .title {}
+
+  .panel-footer hr {
+   margin: 3px 0 3px 0;
+   display: block;
+   height: 1px;
+   border: 0;
+   border-top: 1px solid #197fb3;
+   padding: 0;
+  }
+
+  .panel-footer button {
+   border: solid 1px #166D9A;
+   background: #166D9A;
+   font-family: 'Open Sans', sans-serif;
+   font-weight: 600;
+   color: white;
+   font-size: 1.3em;
+   text-transform: uppercase;
+   padding: 10px 15px 11px 15px;
+   border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+  }
+
+  .panel-footer button:hover {
+   cursor: pointer;
+  }
+
+  button.cancel {
+   background: white;
+   color: #166D9A;
+  }
+
+  button.cancel:hover {
+   background: #ff0000;
+   border-color: #ff0000;
+   color: white;
+  }
+
+  button.confirm:hover {
+   background: #00b300;
+   border-color: #00b300;
+   color: white;
+  }
+
+  .dive {
+   margin-top: 5px;
+  }
+
+  .sub {
+   font-size: 75%;
+   color: #aaaaaa;
+  }
+
+  .very {
+   font-size: 2.2em;
+  }
+
+  .creditcard-body form {
+   font-size: 1.3em;
+  }
+
+  .creditcard-body form i.fa {
+   margin-right: 10px;
+   color: #166D9A;
+  }
+
+  .creditcard-body form fieldset {
+   border-bottom: dotted 2px #D0D0D0;
+   margin-bottom: 25px;
+  }
+
+  .creditcard-body form input {
+   border: none;
+   font-weight: 600;
+   color: #555555;
+   width: 85%;
+   outline: none;
+  }
+
+  .creditcard-body form input::placeholder {
+   color: #D0D0D0;
+  }
+
+  .creditcard-body form label {
+   color: #aaaaaa;
+  }
+
+  .additional {
+   font-weight: 300;
+   font-size: 80%;
+  }
+
+  .fa-info-circle {
+   color: #aaaaaa !important;
+  }
+
+  span.month.focused.active {
+   background: #166D9A !important;
+   background-image: none !important;
+  }
+
+
+  @media (max-width: 992px) {}
+
+  @media (max-width: 767px) {
+
+   .basket-header {
+    border-radius: 15px 15px 0 0;
+    -moz-border-radius: 15px 15px 0 0;
+    -webkit-border-radius: 15px 15px 0 0;
+   }
+
+   .basket-footer {
+    background: #166D9A;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+   }
+
+   .creditcard-header {
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+   }
+
+   .creditcard-footer {
+    border-radius: 0 0 15px 15px;
+    -moz-border-radius: 0 0 15px 15px;
+    -webkit-border-radius: 0 0 15px 15px;
+   }
+
+  }
+ </style>
+ 
+ <!--error messages - validation-->
+ <style>
+  .help-block.error {
+   margin-bottom: 3px;
+   font-size: x-small;
+   color: darkred;
+  }
+ </style>
+
+ <!--LOader-->
+<style>
+ /* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 0, 0, 0, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .modal {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+</style>
+
+</head>
+
+<body translate="no" data-new-gr-c-s-check-loaded="14.994.0" data-gr-ext-installed="">
+
+ <div class="container-fluid background">
+  <div class="row padding-top-20">
+   <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-8 offset-md-1 offset-lg-1 offset-xl-2 padding-horizontal-40">
+    <div class="row">
+     <div class="col-12 main-wrapper">
+      <div class="row">
+       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div id="template" class="row panel-wrapper">
+         <div class="col-12 panel-header basket-header">
+          <div class="row">
+           <div class="col-6 basket-title">
+            <span class="description">review your</span><br><span class="emphasized">Cart Summary</span>
+           </div>
+           <div class="col-6 order-number align-right">
+            <span class="description">order #</span><br><span class="emphasized">{{order_number}}</span>
+           </div>
+          </div>
+          <div class="row column-titles padding-top-10">
+           <div class="col-2 align-center"><span>Photo</span></div>
+           <div class="col-5 align-center"><span>Name</span></div>
+           <div class="col-2 align-center"><span>Quantity</span></div>
+           <div class="col-3 align-right"><span>Price</span></div>
+          </div>
+         </div>
+         <div class="col-12 panel-body basket-body">
+          {{#products}}
+          <div class="row product">
+           <div class="col-2 product-image"><img src="{{thumbnail}}"></div>
+           <div class="col-5">{{name}}<br><span class="additional">{{additional}}</span></div>
+           <div class="col-2 align-right"><span class="sub">{{unit}}</span> {{quantity}}</div>
+           <div class="col-3 align-right"><span class="sub">{{{currency}}}</span> {{price}}</div>
+          </div>
+          {{/products}}
+         </div>
+         <div class="col-12 panel-footer basket-footer">
+          <hr>
+          <div class="row">
+           <div class="col-8 align-right description">
+            <div class="dive">Subtotal</div>
+           </div>
+           <div class="col-4 align-right"><span class="emphasized">{{{currency}}}{{subtotal}}</span></div>
+           <div class="col-8 align-right description">
+            <div class="dive">Taxes</div>
+           </div>
+           <div class="col-4 align-right"><span class="emphasized">{{{currency}}}{{taxes}}</span></div>
+           <div class="col-8 align-right description">
+            <div class="dive">Shipping</div>
+           </div>
+           <div class="col-4 align-right"><span class="emphasized">{{{currency}}}{{shipping_cost}}</span></div>
+          </div>
+          <hr>
+          <div class="row">
+           <div class="col-8 align-right description">
+            <div class="dive">Total</div>
+           </div>
+           <div class="col-4 align-right"><span class="very emphasized">{{{currency}}}{{total}}</span></div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="row panel-wrapper">
+         <div class="col-12 panel-header creditcard-header"  style="overflow: hidden; outline: none;">
+          <div class="row">
+           <div class="col-12 creditcard-title">
+            <span class="description">please enter your</span><br><span class="emphasized">Credit Card
+             Information</span>
+           </div>
+          </div>
+         </div>
+         <div class="col-12 panel-body creditcard-body">
+             <form id="paymentForm" action="#" method="post" target="_self">
+                 <fieldset class="form-group">
+                     <label for="cardname">Name on the Card</label><br>
+                     <i class="fa fa-user-o" aria-hidden="true"></i>
+                     <input type='text' id='cardname' name='cardname' placeholder='John Doe' title='Name on the Card'>
+                     <div class="messages"></div>
+                 </fieldset>
+                 <fieldset class="form-group">
+                     <label for="cardnumber">Card Number</label><br>
+                     <i class="fa fa-credit-card" aria-hidden="true"></i>
+                     <input type='text' id='cardnumber' name='cardnumber' placeholder='1234 5678 9123 4567' title='Card Number'>
+                     <div class="messages"></div>
+                 </fieldset>
+                 <fieldset class="form-group">
+                     <label for="card-expiration">Expiration Date</label><br>
+                     <i class="fa fa-calendar" aria-hidden="true"></i>
+                     <input type='text' id='cardexpiration' name='cardexpiration' placeholder='YY/MM' title='Expiration' class="card-expiration">
+                     <div class="messages"></div>
+                 </fieldset>
+                 <fieldset class="form-group">
+                     <label for="card-ccv">CVC/CCV</label>&nbsp;
+                     <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right"
+                        title="The CVV Number on your credit card or debit card is a 3 digit number on VISA, MasterCard and Discover branded credit and debit cards. On your American Express branded credit or debit card it is a 4 digit numeric code."></i><br>
+                     <i class="fa fa-lock" aria-hidden="true"></i>
+                     <input type='text' id='cardccv' name='cardccv' placeholder='123' title='CVC/CCV'>
+                     <div class="messages"></div>
+                 </fieldset>
+                 <fieldset class="form-group">
+                     <label for="address">Address</label><br>
+                     <i class="fa fa-address" aria-hidden="true"></i>
+                     <input type='text' id='address' name='address' placeholder='Main av 123' title='address'>
+                     <div class="messages"></div>
+                 </fieldset>
+                 <fieldset class="form-group">
+                     <label for="city">City</label><br>
+                     <i class="fa fa-city" aria-hidden="true"></i>
+                     <input type='text' id='city' name='city' placeholder='CDMX' title='city'>
+                     <div class="messages"></div>
+                 </fieldset>
+                 <fieldset class="form-group">
+                     <label for="country">Country</label><br>
+                     <i class="fa fa-country" aria-hidden="true"></i>
+                     <input type='text' id='country' name='country' placeholder='Mexico' title='country'>
+                     <div class="messages"></div>
+                 </fieldset>
+                 <fieldset class="form-group">
+                     <label for="zipcode">ZipCode</label><br>
+                     <i class="fa fa-zipcode" aria-hidden="true"></i>
+                     <input type='text' id='zipcode' name='zipcode' placeholder='02800' title='zipcode'>
+                     <div class="messages"></div>
+                 </fieldset>
+                 <fieldset class="form-group">
+                     <label for="email">Email</label><br>
+                     <i class="fa fa-email" aria-hidden="true"></i>
+                     <input type='text' id='email' name='email' placeholder='test@test.com' title='email'>
+                     <div class="messages"></div>
+                 </fieldset>
+                 <fieldset class="form-group">
+                     <label for="phone">Phone</label><br>
+                     <i class="fa fa-phone" aria-hidden="true"></i>
+                     <input type='text' id='phone' name='phone' placeholder='+52 5555 5555' title='phone'>
+                     <div class="messages"></div>
+                 </fieldset>
+                 <div class="form-group">
+                     <label for="capturecheckbox">Pago en una llamda</label>
+                     <input type="checkbox" id="capturecheckbox" name="capturecheckbox">
+                 </div>
+             </form>
+         </div>         <div class="col-12 panel-footer creditcard-footer">
+          <div class="row">
+              <div class="col-12 align-right">
+                  <button class="cancel">Cancel</button> &nbsp;
+                  <button id="submitButton" class="confirm">Confirm & Pay</button>
+              </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+ <!--loader-->
+ <div class="modal"><!-- Place at bottom of page --></div>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+ <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
+
+ <script id="main-js">
+
+  $(document).ready(function () {
+
+   $('[data-toggle="tooltip"]').tooltip();
+   var template = $('#template').html();
+   Mustache.parse(template);
+   var rendered = Mustache.render(template, get_basket());
+   $('#template').html(rendered);
+
+
+   if ($('.basket-body').hasScrollBar()) {
+    $('.column-titles').addClass('fix-overflow');
+    $('.basket-body').niceScroll({ autohidemode: false, cursorcolor: "#ffffff", cursorborder: "1px solid #D0D0D0", cursorborderradius: "0", background: "#ffffff" });
+   } else {
+    $('.column-titles').removeClass('fix-overflow');
+   }
+
+   $('.card-expiration').datepicker({
+    format: "mm/yyyy",
+    startView: "months",
+    minViewMode: "months"
+   });
+
+
+  });
+
+  function get_basket() {
+   var products =
+    [
+     { name: "Product 1 lorem", additional: "Additional Informations", quantity: 1, unit: "pc", price: 10, thumbnail: "http://via.placeholder.com/200x200" },
+     { name: "Product 2 ipsum", additional: "Additional Informations", quantity: 1, unit: "kg", price: 20, thumbnail: "http://via.placeholder.com/640x480" },
+     { name: "Product 3 dolor sit amet", additional: "Additional Informations", quantity: 2, unit: "l", price: 30, thumbnail: "http://via.placeholder.com/1920x1080" },
+     { name: "Product 4 consectetur adipiscing elit", additional: "Additional Informations", quantity: 1, unit: "pcs", price: 25, thumbnail: "http://via.placeholder.com/800x400" },
+     { name: "Product 5 sed dapibus nibh", additional: "Additional Informations", quantity: 3, unit: "pcs", price: 9, thumbnail: "http://via.placeholder.com/400x800" },
+     { name: "Product 6 sit amet maximus ultrices", additional: "Additional Informations", quantity: 1, unit: "pcs", price: 13, thumbnail: "http://via.placeholder.com/2048x1024" },
+     { name: "Product 7 duis rutrum", additional: "Additional Informations", quantity: 5, unit: "pcs", price: 200, thumbnail: "http://via.placeholder.com/20x20" },
+     { name: "Product 8 efficitur lectus et facilisis", additional: "Additional Informations", quantity: 1, unit: "pc", price: 350, thumbnail: "http://via.placeholder.com/256x64" },
+     { name: "Product 9 nulla at ipsum nec risus vestibulum ullamcorper", additional: "Additional Informations", quantity: 10, unit: "pcs", price: 70, thumbnail: "http://via.placeholder.com/64x256" },
+     { name: "Product 10 proin facilisis magna", additional: "Additional Informations", quantity: 4, unit: "pcs", price: 1000, thumbnail: "http://via.placeholder.com/1024x768" },
+     { name: "Product 11 donec at arcu a tortor pellentesque cursus vel a quam", additional: "Additional Informations", quantity: 300, unit: "pcs", price: 6600, thumbnail: "http://via.placeholder.com/400x100" },
+     { name: "Product 12 nulla auctor libero in velit vulputate", additional: "Additional Informations", quantity: 6, unit: "pcs", price: 17.5, thumbnail: "http://via.placeholder.com/100x500" }];
+
+   return { "products": products, "order_number": "1-23-456789A", "subtotal": 13579, "taxes": 246, "shipping_cost": 810, "total": 16825, "currency": "&dollar;" };
+  }
+
+  (function ($) {
+   $.fn.hasScrollBar = function () {
+    return this.get(0).scrollHeight > this.height();
+   };
+  })(jQuery);
+
+ </script>
+
+ <script id="validations">
+  //validations
+  (function () {
+
+   // These are the constraints used to validate the form
+   var constraints = {
+    email: {
+     presence: true,
+     email: true
+    },
+    country: {
+     presence: true,
+    },
+    city: {
+     presence: true,
+    },
+    address: {
+     presence: true,
+    },
+    phone: {
+     presence: true,
+    },
+    cardname: {
+     presence: true,
+    },
+    cardnumber: {
+    presence: true,
+    format: {
+      pattern: /^(34|37|4|5[1-5]).*$/,
+      message: function(value, attribute, validatorOptions, attributes, globalOptions) {
+        return validate.format("^%{num} is not a valid credit card number", {
+          num: value
+        });
+      }
+    },
+    length: function(value, attributes, attributeName, options, constraints) {
+      if (value) {
+        // Amex
+        if ((/^(34|37).*$/).test(value)) return {is: 15};
+        // Visa, Mastercard
+        if ((/^(4|5[1-5]).*$/).test(value)) return {is: 16};
+      }
+      // Unknown card, don't validate length
+      return false;
+    }
+  },
+    cardccv: {
+     presence: true,
+    },
+    cardexpiration: {
+     presence: true,
+    },
+    zipcode: {
+     presence: true,
+     format: {
+      pattern: "\\d{5}"
+     }
+    }
+   };
+
+   // Hook up the form so we can prevent it from being posted
+   var form = document.querySelector("form#paymentForm");
+
+     //Trigger validacion
+   $("#submitButton").on("click", function () {
+    handleFormSubmit();
+   });
+
+   function handleFormSubmit() {
+   
+    // validate the form against the constraints
+    var errors = validate(form, constraints);
+    // then we update the form to reflect the results
+    console.log(errors);
+    showErrors(form, errors || {});
+    if (!errors) {
+        $("body").addClass("loading");
+
+     // DecisionManager
+        var partnerItem = {};
+        partnerItem.developerId = "7891234";
+        partnerItem.solutionId = "89012345";
+
+        var info = {};
+        info.code = "54323007";
+        info.comments = "decision manager case";
+        info.partner = partnerItem;
+
+        var card = {};
+        card.number = $("#cardnumber").val();
+        var fecha = $("#cardexpiration").val();
+        var arr = fecha.split('/');
+        card.expirationMonth = arr[0];
+        card.expirationYear = arr[1];
+
+        var payInfo = {};
+        payInfo.card = card;
+
+        var details = {};
+        details.currency = "USD";
+        details.totalAmount = "16825";
+
+        var bill = {};
+        bill.address1 = $("#address").val();
+        bill.administrativeArea = "NH";
+        bill.country = "US";
+        bill.locality = $("#city").val();
+        var names = $("#cardname").val();
+        var arrN = names.split(' ');
+        bill.firstName = arrN[0];
+        bill.lastName = arrN[1];
+        bill.phoneNumber = $("#phone").val();
+        bill.email = $("#email").val();
+        bill.postalCode = $("#zipcode").val();
+
+        var order = {};
+        order.amountDetails = details;
+        order.billTo = bill;
+
+        var Object = {};
+        Object.clientReferenceInformation = info;
+        Object.paymentInformation = payInfo;
+        Object.orderInformation = order;
+      
+        var myString = JSON.stringify(Object);
+        console.log(myString);
+
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:54833/Service1.svc/DecisionManager",
+
+            data: JSON.stringify(Object),
+            contentType: "application/json",
+            dataType: "text",
+            processData: true,
+            success: function (e) {
+                
+               
+                //autorization
+                var ObjectOnePayment = {};
+                ObjectOnePayment.clientReferenceInformation = info;
+                ObjectOnePayment.paymentInformation = payInfo;
+                ObjectOnePayment.orderInformation = order;
+
+                if ($('#capturecheckbox').is(':checked')) {
+
+                    var captureItem = {};
+                    captureItem.capture = "true";
+                    ObjectOnePayment.processingInformation = captureItem;
+                } 
+
+                var mString = JSON.stringify(ObjectOnePayment);
+                console.log(ObjectOnePayment);
+
+                $.ajax({
+                    method: "POST",
+                    url: "http://localhost:54833/Service1.svc/CreatePayment",
+
+                    data: JSON.stringify(ObjectOnePayment),
+                    contentType: "application/json",
+                    dataType: "text",
+                    processData: true,
+                    success: function (e) {
+
+                        $("body").removeClass("loading");
+                       
+
+
+                    },
+                    error: function (xhr) {
+
+                    }
+                });
+
+              
+
+
+
+
+            },
+            error: function (xhr) {
+               
+            }
+        });
+    }
+   }
+
+   // Updates the inputs with the validation errors
+   function showErrors(form, errors) {
+    
+    // We loop through all the inputs and show the errors for that input
+    $.each(form.querySelectorAll("input"), function () {
+     // Since the errors can be null if no errors were found we need to handle 
+     var input = $(this);
+     showErrorsForInput(input[0], errors && errors[input[0].name]);
+    });
+   }
+
+   // Shows the errors for a specific input
+   function showErrorsForInput(input, errors) {
+    
+    // This is the root of the input
+    var formGroup = closestParent(input.parentNode, "form-group");
+    
+     // Find where the error messages will be insert into
+    messages = formGroup.querySelector(".messages");
+    // First we remove any old messages and resets the classes
+    resetFormGroup(formGroup);
+    // If we have errors
+    if (errors) {
+     // we first mark the group has having errors
+     formGroup.classList.add("has-error");
+     // then we append all the errors
+     $.each(errors, function () {
+      addError(messages, errors);
+     });
+    } else {
+     // otherwise we simply mark it as success
+     formGroup.classList.add("has-success");
+    }
+   }
+
+   // Recusively finds the closest parent that has the specified class
+   function closestParent(child, className) {
+    if (!child || child == document) {
+     return null;
+    }
+    if (child.classList.contains(className)) {
+     return child;
+    } else {
+     return closestParent(child.parentNode, className);
+    }
+   }
+
+   function resetFormGroup(formGroup) {
+    // Remove the success and error classes
+    formGroup.classList.remove("has-error");
+    formGroup.classList.remove("has-success");
+    // and remove any old messages
+    $.each(formGroup.querySelectorAll(".help-block.error"), function () {
+     $(this)[0].parentNode.removeChild( $(this)[0]);
+    });
+   }
+
+   // Adds the specified error with the following markup
+   // <p class="help-block error">[message]</p>
+   function addError(messages, error) {
+    var block = document.createElement("p");
+    block.classList.add("help-block");
+    block.classList.add("error");
+    block.innerText = error;
+    messages.appendChild(block);
+   }
+
+   function showSuccess() {
+    // We made it \:D/
+    alert("Success!");
+   }
+  })();
+
+
+  
+ </script>
+
+ 
+</body>
+
+</html>
