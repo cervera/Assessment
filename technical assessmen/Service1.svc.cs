@@ -201,6 +201,7 @@ namespace technical_assessmen
             }
             catch (Exception e)
             {
+                var error = e.Message;
                 return null;
             }
 

@@ -706,7 +706,7 @@ body.loading .modal {
         payInfo.card = card;
 
         var details = {};
-        details.currency = "USD";
+        details.currency = "MXN";
         details.totalAmount = "16825";
 
         var bill = {};
@@ -743,8 +743,20 @@ body.loading .modal {
             dataType: "text",
             processData: true,
             success: function (e) {
-                
-               
+
+                if (e == null) {
+                    return;
+                }
+
+                responseDM = JSON.parse(e);
+
+
+                if (responseDM.status == "REJECTED") {
+                    
+                    $("body").removeClass("loading");
+                    alert("pago rechazado");
+                    return false;
+                } 
                 //autorization
                 var ObjectOnePayment = {};
                 ObjectOnePayment.clientReferenceInformation = info;
@@ -771,9 +783,10 @@ body.loading .modal {
                     processData: true,
                     success: function (e) {
 
+                        alert("pago aceptado");
                         $("body").removeClass("loading");
                        
-
+                        return true;
 
                     },
                     error: function (xhr) {

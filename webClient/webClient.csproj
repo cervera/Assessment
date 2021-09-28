@@ -90,7 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="checkout.html" />
-    <Content Include="ReverseRefund.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -100,13 +99,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RefundReversal.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="ReverseRefund.aspx.cs">
-      <DependentUpon>ReverseRefund.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReverseRefund.aspx.designer.cs">
-      <DependentUpon>ReverseRefund.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

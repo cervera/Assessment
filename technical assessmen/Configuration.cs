@@ -10,21 +10,21 @@ namespace Cybersource_rest_samples_dotnet
         public Dictionary<string, string> GetConfiguration()
         {
             _configurationDictionary.Add("authenticationType", "HTTP_SIGNATURE");
-            //_configurationDictionary.Add("merchantID", "maria_cervera");
-            //_configurationDictionary.Add("merchantsecretKey", "jg0KjoK7dhI3loSnhT+umwQA3MrQkDZNaSzlybECbjE=");
-            //_configurationDictionary.Add("merchantKeyId", "18da643a-27fa-4bd1-a19b-875ea2909d42");
-            //_configurationDictionary.Add("keyFilename", "maria_cervera");
-            //_configurationDictionary.Add("runEnvironment", "apitest.cybersource.com");
-            //_configurationDictionary.Add("keyAlias", "maria_cervera");
-            //_configurationDictionary.Add("keyPass", "maria_cervera");
-
-            _configurationDictionary.Add("merchantID", "testrest");
-            _configurationDictionary.Add("merchantsecretKey", "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=");
-            _configurationDictionary.Add("merchantKeyId", "08c94330-f618-42a3-b09d-e1e43be5efda");
-            _configurationDictionary.Add("keyFilename", "testrest");
+            _configurationDictionary.Add("merchantID", "maria_cervera");
+            _configurationDictionary.Add("merchantsecretKey", "jg0KjoK7dhI3loSnhT+umwQA3MrQkDZNaSzlybECbjE=");
+            _configurationDictionary.Add("merchantKeyId", "18da643a-27fa-4bd1-a19b-875ea2909d42");
+            _configurationDictionary.Add("keyFilename", "maria_cervera");
             _configurationDictionary.Add("runEnvironment", "apitest.cybersource.com");
-            _configurationDictionary.Add("keyAlias", "testrest");
-            _configurationDictionary.Add("keyPass", "testrest");
+            _configurationDictionary.Add("keyAlias", "maria_cervera");
+            _configurationDictionary.Add("keyPass", "maria_cervera");
+
+            //_configurationDictionary.Add("merchantID", "testrest");
+            //_configurationDictionary.Add("merchantsecretKey", "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=");
+            //_configurationDictionary.Add("merchantKeyId", "08c94330-f618-42a3-b09d-e1e43be5efda");
+            //_configurationDictionary.Add("keyFilename", "testrest");
+            //_configurationDictionary.Add("runEnvironment", "apitest.cybersource.com");
+            //_configurationDictionary.Add("keyAlias", "testrest");
+            //_configurationDictionary.Add("keyPass", "testrest");
 
             _configurationDictionary.Add("keysDirectory", "Source\\Resource");
             _configurationDictionary.Add("enableLog", "FALSE");
